@@ -1,0 +1,36 @@
+body {
+  background-color: #eee;
+  opacity: 0.8;
+  background-image: radial-gradient(#ccc 0.5px, #fefefe 0.5px);
+  background-size: 10px 10px;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  color: #ccc;
+  margin-bottom: 1em;
+  text-shadow: 2px 2px 2px #eee;
+  font-size: 5em;
+}
+
+.letter {
+  border: 1px solid #eee;
+  padding: 1em .5em;
+  border-radius: 5px;
+  margin: 3px;
+  width: 1.2em;
+  display: inline-block;
+  font-size: 2em;
+  background: white;
+  box-shadow: 2px 2px 2px #eee;
+}
+
+.letter.hide {
+  visibility: hidden
+}
