@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { useStore } from "./store";
+import { useSocket } from "./hooks/useSocket";
 
 function App() {
-
-  const store = useStore();
+  const { gameState, sendKey, isStarted } = useSocket();
 
   function handleKeyDown(e: KeyboardEvent) {
-    const key = e.key.toUpperCase();
-    if (key.match(/^[A-Z]+$/)) {
-      store.actions.sendKey(key);
+    const key = e.key;
+    if (key.match(/^[A-Za-z]+$/)) {
+      sendKey(key);
     }
   }
+
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown, false);
     return () => {
@@ -21,11 +21,16 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="logo"><u>hang</u>gle</h1>
-      {store.state.map((string, i) => {
-        return <span className={`letter ${string === " " && "hide"}`} key={i}>
-          {string}
-        </span>
+      <h1 className="logo">
+        <u>hang</u>gle
+      </h1>
+      <h2>{isStarted ? "Game On!" : "Game Over!!"}</h2>
+      {gameState.map((letter, i) => {
+        return (
+          <span className={`letter ${letter === " " && "hide"}`} key={i}>
+            {letter}
+          </span>
+        );
       })}
     </div>
   );
